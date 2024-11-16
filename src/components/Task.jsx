@@ -17,7 +17,8 @@ function Task({ item }) {
           onChange={() => updateTask(item.id)}
           checked={item.completed}
         />
-        {item.title}
+        
+        <span className={`text-stone-500 ${item.completed ? 'line-through' : ''}`}>{item.title}</span>
       </label>
 
       <button
