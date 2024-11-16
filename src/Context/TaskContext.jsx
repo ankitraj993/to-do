@@ -12,26 +12,42 @@ export default function TaskProvider({ children }) {
     id: Math.random(),
     title: 'Task 1',
     description: 'Description 1',
+    completed: false
   }]);
 
   function addTask(title, description) {
-    console.log(title, description);
-    setTaskList((prevState) => {
-      console.log('prevState :', prevState)
-      const items = [...prevState];
-      const newTask = {
+    setTaskList((prevState) => [
+      ...prevState,
+      {
         id: Math.random(),
         title,
-        description
+        description,
+        completed: false      
       }
-      return [...items, newTask]
+    ]);
+  }
+
+  function deleteTask(id) {
+    setTaskList((prevState) => prevState.filter((item) => item.id !== id));
+  }
+
+  function updateTask(id) {
+    setTaskList((prevState) => {
+      const items = prevState.map(item => {
+        if (item.id === id) {
+          return { ...item, completed: !item.completed };
+        }
+        return item;
+      });
+      return items;
     });
   }
+
   const ctxValue = {
     items: taskList,
     addTask,
-    deleteTask: () => {},
-    updateTask: () => {},
+    deleteTask,
+    updateTask,
   };
 
   return (
