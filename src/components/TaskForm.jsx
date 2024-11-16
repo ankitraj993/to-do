@@ -18,14 +18,22 @@ function TaskForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' ref={titleValue} placeholder='Title' />
+    <form onSubmit={handleSubmit} className='flex gap-4 flex-col'>
+      <input
+        type='text'
+        ref={titleValue}
+        placeholder='Title'
+        className='border-2 p-2 rounded-md'
+      />
       <textarea
         type='text'
         ref={descriptionValue}
         placeholder='Description'
+        className='border-2 p-2 rounded-md'
       ></textarea>
-      <button type='submit'>Add Task</button>
+      <button type='submit' className='bg-black text-white p-2 rounded-md'>
+        Add Task
+      </button>
     </form>
   );
 }
