@@ -16,12 +16,12 @@ export default function TaskProvider({ children }) {
 
   function addTask(title) {
     setTaskList((prevState) => [
-      ...prevState,
       {
         id: Math.random(),
         title,
         completed: false      
-      }
+      },
+      ...prevState
     ]);
   }
 
