@@ -11,17 +11,15 @@ export default function TaskProvider({ children }) {
   const [taskList, setTaskList] = useState([{
     id: Math.random(),
     title: 'Task 1',
-    description: 'Description 1',
     completed: false
   }]);
 
-  function addTask(title, description) {
+  function addTask(title) {
     setTaskList((prevState) => [
       ...prevState,
       {
         id: Math.random(),
         title,
-        description,
         completed: false      
       }
     ]);
